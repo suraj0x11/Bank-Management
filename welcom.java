@@ -10,8 +10,27 @@ interface Welcome_Bank{
     void ViewTransactionHistory();
     void Exit();
 }
+class Customer{
+    String name;
+    String id;
+    String email;
+    int accountnum;
+    Customer(String id, String name, String email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+    }
+    Customer(int accNo){
+        this.accountnum = accNo;
+    }
+    
+}
 class Boi implements Welcome_Bank{
+
+    private Customer regCustomer;
+    //creating account
     public void create_new(){
+
         System.out.println("=========================================== ");
         System.out.println("CREATE NEW CUSTOMER ");
         System.out.println("=========================================== ");
@@ -24,17 +43,57 @@ class Boi implements Welcome_Bank{
         String id = sc.nextLine();
 
         System.out.println("Enter Email Id:");
-        String mailId = sc.nextLine();
+        String email = sc.nextLine();
         
+        // save info
+        regCustomer = new Customer(id,name,email); 
+
         System.out.println("Customer Registered Successfully!"); 
         System.out.println("Press Enter to continue..."); 
+        sc.nextLine();
         System.out.println("-------------------------------------------");
+        this.OpenNewAccount();
     }
+    //open an occcount or batao yaha takk sab thik
     public void OpenNewAccount() {
-        System.out.println("Opening a new account...");
+        System.out.println("=========================================== ");
+        System.out.println("Open New Account ");
+        System.out.println("=========================================== ");
+        
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter Customer ID:");
+        String id = sc.nextLine();
+        while (id == regCustomer.id) {
+            id = sc.nextLine();
+        }
+
+        System.out.println("Enter Account Type (Savings/Checking):");
+        String accType = sc.nextLine();
+        
+        System.out.println("Enter Initial Deposit:");
+        int DepoAmount = sc.nextInt();
+
+        System.out.println("Account Created Successfully!");
+        int accNo = (int)Math.random()*(1000-100)+100;
+        regCustomer = new Customer(accNo);
+        System.out.println("Account Number"+"AC"+accNo); //account number
+
+        System.out.println("Press Enter to continue..."); 
+        sc.nextLine();
+        System.out.println("-------------------------------------------");
+        this.DepositMoney();
     }
     public void DepositMoney() {
-        System.out.println("Depositing money...");
+        // =========================================== 
+        // DEPOSIT MONEY 
+        // =========================================== 
+        // Enter Account Number: ACC1001 
+        // Enter Amount to Deposit: 300 
+        // Deposited $300 Successfully! 
+        // New Balance: $800 
+        // Press Enter to continue... 
+        // -------------------------------------------
     }
     public void WithdrawMoney() {
         System.out.println("Withdrawing money...");
