@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import javax.lang.model.type.NullType;
+
 interface Welcome_Bank{
     void create_new();
     void OpenNewAccount(); 
@@ -14,19 +16,23 @@ class Customer{
     private String name;
     private String id;
     private String email;
+    private String accType;
     private int accountnum;
     private int totalamount;
-    Customer(String id, String name, String email) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
+    Customer(){
+        this.accountnum = 0;
+        this.email = null;
+        this.id = null;
+        this.name = null;
         this.totalamount = 0;
-    }
-    Customer(int accNo){
-        this.accountnum = accNo;
+        this.accType = null;
     }
     public void deposit(int amount){
-        this.totalamount += amount;
+        if (amount > 0) {
+            this.totalamount += amount;
+        } else {
+            System.out.println("Invalid deposit amount");
+        }
         
     }
     //setters-------------made by one and only bade bhaiya\
@@ -41,6 +47,9 @@ class Customer{
     }
     public void setEmail(String email){
         this.email = email;
+    }
+    public void setaccType(String accType){
+        this.accType = accType;
     }
     //getters-------------made by one and only bade bhaiya
     public int getBalance(){
@@ -58,10 +67,17 @@ class Customer{
     public String getEmail(){
         return email;
     }
+    public String setaccType(){
+        return accType;
+    }
 }
 class Boi implements Welcome_Bank{
 
-    private Customer regCustomer;
+    protected Customer regCustomer;
+    //returna class type object
+    public Customer getCustomer(Customer regCustomer){
+        return regCustomer;
+    }
     //creating account
     public void create_new(){
 
@@ -72,15 +88,15 @@ class Boi implements Welcome_Bank{
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Customer Name:");
         String name = sc.nextLine();
+        regCustomer.setName(name);
 
         System.out.println("Enter Customer ID:");
         String id = sc.nextLine();
+        regCustomer.setId(id);
 
         System.out.println("Enter Email Id:");
         String email = sc.nextLine();
-        
-        // save info
-        regCustomer = new Customer(id,name,email); 
+        regCustomer.setEmail(email);
 
         System.out.println("Customer Registered Successfully!"); 
         System.out.println("Press Enter to continue..."); 
@@ -98,12 +114,13 @@ class Boi implements Welcome_Bank{
 
         System.out.println("Enter Customer ID:");
         String id = sc.nextLine();
-        while (id == regCustomer.id) {
+        while (id == regCustomer.getId()) {
             id = sc.nextLine();
         }
 
         System.out.println("Enter Account Type (Savings/Checking):");
         String accType = sc.nextLine();
+        regCustomer.setaccType(accType);
         
         System.out.println("Enter Initial Deposit:");
         int DepoAmount = sc.nextInt();
@@ -111,7 +128,7 @@ class Boi implements Welcome_Bank{
 
         System.out.println("Account Created Successfully!");
         int accNo = (int)Math.random()*(5000-987)+987;
-        regCustomer = new Customer(accNo);
+        regCustomer.setAccountNum(accNo);
         System.out.println("Account Number "+"AC"+accNo); //account number
 
         System.out.println("Press Enter to continue..."); 
@@ -128,7 +145,7 @@ class Boi implements Welcome_Bank{
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Account Number:");
         int s = sc.nextInt();
-        while (regCustomer.accountnum != s) {
+        while (regCustomer.getAccountNum() != s) {
             System.out.println("previous acc. no. is galat !!");
             s = sc.nextInt();
         }
@@ -246,26 +263,53 @@ class welcom{
                         obj1.create_new();
                         break;
                     case 2:
-                        if(obj1.)
-                        obj1.OpenNewAccount();
+                        if(obj1.regCustomer.getName() != null){
+                            System.out.println("Pahle account create karo");
+                            break;
+                        }
+                        else obj1.OpenNewAccount();
                         break;
                     case 3:
-                        obj1.DepositMoney();
+                        if(obj1.regCustomer.getName() != null){
+                            System.out.println("Pahle account create karo");
+                            break;
+                        }
+                        else obj1.DepositMoney();
                         break;
                     case 4:
-                        obj1.WithdrawMoney();;
+                        if(obj1.regCustomer.getName() != null){
+                            System.out.println("Pahle account create karo");
+                            break;
+                        }
+                        else obj1.WithdrawMoney();;
                         break;
                     case 5:
-                        obj1.TransferMoney();;
+                        if(obj1.regCustomer.getName() != null){
+                            System.out.println("Pahle account create karo");
+                            break;
+                        }
+                        else obj1.TransferMoney();;
                         break;
                     case 6:
-                        obj1.ViewAccountDetails();;
+                        if(obj1.regCustomer.getName() != null){
+                            System.out.println("Pahle account create karo");
+                            break;
+                        }
+                        else obj1.ViewAccountDetails();;
                         break;
                     case 7:
-                        obj1.ViewTransactionHistory();;
+                        if(obj1.regCustomer.getName() != null){
+                            System.out.println("Pahle account create karo");
+                            break;
+                        }
+                        else obj1.ViewTransactionHistory();;
                         break;
                     case 8:
-                        obj1.Exit();
+                        if(obj1.regCustomer.getName() != null){
+                            System.out.println("Pahle account create karo");
+                            break;
+                        }
+                        else obj1.Exit();
                         break;
                     default:
                         break;
