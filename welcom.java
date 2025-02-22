@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-import javax.lang.model.type.NullType;
+
 
 interface Welcome_Bank{
     void create_new();
@@ -73,7 +73,7 @@ class Customer{
 }
 class Boi implements Welcome_Bank{
 
-    protected Customer regCustomer;
+    protected Customer regCustomer = new Customer();
     //returna class type object
     public Customer getCustomer(Customer regCustomer){
         return regCustomer;
@@ -114,9 +114,11 @@ class Boi implements Welcome_Bank{
 
         System.out.println("Enter Customer ID:");
         String id = sc.nextLine();
-        while (id == regCustomer.getId()) {
+        while (!id.equals(regCustomer.getId())) {
+            System.out.println("phir se likho !!");
             id = sc.nextLine();
         }
+
 
         System.out.println("Enter Account Type (Savings/Checking):");
         String accType = sc.nextLine();
@@ -127,7 +129,7 @@ class Boi implements Welcome_Bank{
         regCustomer.deposit(DepoAmount);//deposited amount
 
         System.out.println("Account Created Successfully!");
-        int accNo = (int)Math.random()*(5000-987)+987;
+        int accNo = (int)(Math.random()*(5000-987))+987;
         regCustomer.setAccountNum(accNo);
         System.out.println("Account Number "+"AC"+accNo); //account number
 
