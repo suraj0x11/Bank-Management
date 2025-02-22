@@ -11,11 +11,11 @@ interface Welcome_Bank{
     void Exit();
 }
 class Customer{
-    String name;
-    String id;
-    String email;
-    int accountnum;
-    int totalamount;
+    private String name;
+    private String id;
+    private String email;
+    private int accountnum;
+    private int totalamount;
     Customer(String id, String name, String email) {
         this.id = id;
         this.name = name;
@@ -29,10 +29,35 @@ class Customer{
         this.totalamount += amount;
         
     }
+    //setters-------------made by one and only bade bhaiya\
+    public void setAccountNum(int accountnum) {
+        this.accountnum = accountnum;
+    }
+    public void setName(String name){
+        this.name = name;
+    }
+    public void setId(String id){
+        this.id = id;
+    }
+    public void setEmail(String email){
+        this.email = email;
+    }
+    //getters-------------made by one and only bade bhaiya
     public int getBalance(){
         return totalamount;
     }
-    
+    public int getAccountNum() {
+        return accountnum;
+    }
+    public String getName(){
+        return name;
+    }
+    public String getId(){
+        return id;
+    }
+    public String getEmail(){
+        return email;
+    }
 }
 class Boi implements Welcome_Bank{
 
@@ -221,6 +246,7 @@ class welcom{
                         obj1.create_new();
                         break;
                     case 2:
+                        if(obj1.)
                         obj1.OpenNewAccount();
                         break;
                     case 3:
