@@ -15,6 +15,8 @@ class Customer{
     String id;
     String email;
     int accountnum;
+    int DepoAmount;
+    int totalamount;
     Customer(String id, String name, String email) {
         this.id = id;
         this.name = name;
@@ -23,7 +25,10 @@ class Customer{
     Customer(int accNo){
         this.accountnum = accNo;
     }
-    
+    Customer(int DepoAmount,int totalamount){
+        this.DepoAmount = DepoAmount;
+        this.totalamount = 
+    }
 }
 class Boi implements Welcome_Bank{
 
@@ -73,6 +78,7 @@ class Boi implements Welcome_Bank{
         
         System.out.println("Enter Initial Deposit:");
         int DepoAmount = sc.nextInt();
+        regCustomer = new Customer(DepoAmount);
 
         System.out.println("Account Created Successfully!");
         int accNo = (int)Math.random()*(1000-100)+100;
@@ -94,6 +100,31 @@ class Boi implements Welcome_Bank{
         // New Balance: $800 
         // Press Enter to continue... 
         // -------------------------------------------
+        System.out.println("=========================================== ");
+        System.out.println("Deposit Money ");
+        System.out.println("=========================================== ");
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Account Number:");
+        int s = sc.nextInt();
+        while (regCustomer.accountnum != s) {
+            System.out.println("previous acc. no. is galat !!");
+            s = sc.nextInt();
+        }
+ 
+        System.out.println("Enter Amount to Deposit:");
+        int DepoAmount = sc.nextInt();
+        System.out.println("Deposited "+ DepoAmount +"Successfully!");
+        System.out.println("New Balance:"regCustomer.DepoAmount);
+
+        
+        regCustomer = new Customer(accNo);
+        System.out.println("Account Number"+"AC"+accNo); //account number
+
+        System.out.println("Press Enter to continue..."); 
+        sc.nextLine();
+        System.out.println("-------------------------------------------");
+        this.DepositMoney();
     }
     public void WithdrawMoney() {
         System.out.println("Withdrawing money...");
