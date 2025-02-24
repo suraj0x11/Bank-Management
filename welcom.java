@@ -51,6 +51,9 @@ class Customer{
     public void setaccType(String accType){
         this.accType = accType;
     }
+    public void setTotalamount(int credited){
+        this.totalamount -= credited;
+    }
     //getters-------------made by one and only bade bhaiya
     public int getBalance(){
         return totalamount;
@@ -70,6 +73,7 @@ class Customer{
     public String setaccType(){
         return accType;
     }
+    
 }
 class Boi implements Welcome_Bank{
 
@@ -145,9 +149,9 @@ class Boi implements Welcome_Bank{
         System.out.println("=========================================== ");
         
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter Account Number:");
+        System.out.println("Enter Account Number: "+"AC");
         int s = sc.nextInt();
-        while (regCustomer.getAccountNum() != s) {
+        if (regCustomer.getAccountNum() != s) {
             System.out.println("previous acc. no. is galat !!");
             s = sc.nextInt();
         }
@@ -161,14 +165,44 @@ class Boi implements Welcome_Bank{
         System.out.println("Press Enter to continue..."); 
         sc.nextLine();
         System.out.println("-------------------------------------------");
-        this.DepositMoney();
+        this.WithdrawMoney();
     }
+    //paise nikal lo
     public void WithdrawMoney() {
-        System.out.println("Withdrawing money...");
+        System.out.println("=========================================== ");
+        System.out.println("Withdraw Money ");
+        System.out.println("=========================================== ");
+        System.out.println("Enter Account Number: "+"AC");
+        Scanner sc = new Scanner(System.in);
+        int acn = sc.nextInt();
+        if(acn != regCustomer.getAccountNum()){
+            acn = sc.nextInt();
+        }
+        System.out.println("Account number is Correct");
+        System.out.println("Enter Amount to Withdraw");
+        int credit = sc.nextInt();
+        if(credit < regCustomer.getBalance()){
+            regCustomer.setTotalamount(credit);
+        }
+        System.out.println("Withdrawn"+credit+"Successfully!");
+        System.out.println("New Balance"+regCustomer.getBalance());
+        System.out.println("Press Enter to continue..."); 
+        sc.nextLine();
+        System.out.println("-------------------------------------------");
+        this.TransferMoney();
     }
     public void TransferMoney() {
-        System.out.println("Transferring money...");
-    }
+            // =========================================== 
+            // TRANSFER MONEY 
+            // =========================================== 
+            // Enter Your Account Number: ACC1001 
+            // Enter Receiver's Account Number: ACC2002 
+            // Enter Amount to Transfer: 100 
+            // Transfer Successful! $100 Sent to ACC2002 
+            // New Balance: $500 
+            // Press Enter to continue... -------------------------------------------
+            
+        }
     public void ViewAccountDetails() {
         System.out.println("Viewing account details...");
     }
