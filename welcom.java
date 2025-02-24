@@ -62,6 +62,7 @@ class Customer{
     public void setTotalamount(int credited){
         this.totalamount -= credited;
     }
+    
     //getters-------------made by one and only bade bhaiya
     public Object[] getTransferinfo(){
         String tra = "Transferred";
@@ -85,7 +86,9 @@ class Customer{
     public String setaccType(){
         return accType;
     }
-    
+    public String getAccType(){
+        return accType;
+    }
 }
 class Boi implements Welcome_Bank{
 
@@ -203,6 +206,7 @@ class Boi implements Welcome_Bank{
         System.out.println("-------------------------------------------");
         this.TransferMoney();
     }
+    //Paiso ka lenden
     public void TransferMoney() {
             System.out.println("=========================================== ");
             System.out.println("Transfer Money ");
@@ -228,12 +232,30 @@ class Boi implements Welcome_Bank{
             sc.nextLine();
             System.out.println("-------------------------------------------");
             this.ViewAccountDetails();
-        }
+    }
+    //bahi khata jaan lo
     public void ViewAccountDetails() {
-        System.out.println("Viewing account details...");
+        System.out.println("=========================================== ");
+        System.out.println("VIEW ACCOUNT DETAILS ");
+        System.out.println("=========================================== ");
+        System.out.println("Enter Account Number: "+"AC");
+        Scanner sc = new Scanner(System.in);
+        int acn = sc.nextInt();
+        if(acn != regCustomer.getAccountNum()){
+            acn = sc.nextInt();
+        }
+        //details
+        System.out.println("Account Number "+regCustomer.getAccountNum());
+        System.out.println("Customer Id :"+ regCustomer.getId());
+        System.out.println("Account Type "+ regCustomer.getAccType());
+        System.out.println("Balance "+regCustomer.getBalance());
+        System.out.println("Press Enter to continue..."); 
+        sc.nextLine();
+        System.out.println("-------------------------------------------");
+        this.ViewTransactionHistory();();
     }
     public void ViewTransactionHistory() {
-        System.out.println("Viewing transaction history...");
+        
     }
     public void Exit() {
         System.out.println("Exiting...");
