@@ -67,7 +67,7 @@ Each class implements `Welcome_Bank` and represents a different bank with simila
 - Introduce authentication for secure transactions.
 
 ## Contributors
-- **[Your Name]** (Developer)
+- **Suraj Kumar Singh** (Developer)
 
 ## License
 This project is open-source and free to use under the **MIT License**.
