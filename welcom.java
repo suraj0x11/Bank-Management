@@ -32,6 +32,8 @@ class Customer{
         this.name = null;
         this.totalamount = 0;
         this.accType = null;
+        this.depoamount = new ArrayList<>();
+        this.WithDrwawamount = new ArrayList<>();
         
     }
     public void deposit(int amount){
@@ -64,8 +66,12 @@ class Customer{
         this.accType = accType;
     }
     public void setTotalamount(int credited){
-        WithDrwawamount.add(credited);
-        this.totalamount -= credited;
+        if (credited > totalamount) {
+            System.out.println("Insufficient funds!");
+        } else {
+            WithDrwawamount.add(credited);
+            this.totalamount -= credited;
+        }
     }
     
     //getters-------------made by one and only bade bhaiya
