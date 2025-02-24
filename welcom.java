@@ -218,7 +218,7 @@ class Boi implements Welcome_Bank{
             regCustomer.setTotalamount(credit);
         }
         System.out.println("Withdrawn"+credit+"Successfully!");
-        System.out.println("New Balance"+regCustomer.getBalance());
+        System.out.println("New Balance "+regCustomer.getBalance());
         System.out.println("Press Enter to continue..."); 
         sc.nextLine();
         System.out.println("-------------------------------------------");
@@ -229,23 +229,23 @@ class Boi implements Welcome_Bank{
             System.out.println("=========================================== ");
             System.out.println("Transfer Money ");
             System.out.println("=========================================== ");
-            System.out.print("Enter Account Number: "+"AC");
+            System.out.println("Enter Account Number: "+"AC");
             Scanner sc = new Scanner(System.in);
             int acn = sc.nextInt();
             if(acn != regCustomer.getAccountNum()){
                 System.out.println("Mismatched");
-                System.out.print("Enter Account Number: "+"AC");
+                System.out.println("Enter Account Number: "+"AC");
                 acn = sc.nextInt();
             }
-            System.out.print("Enter Reciever Account Number: "+"AC");
+            System.out.println("Enter Reciever Account Number: "+"AC");
             int racn = sc.nextInt();
-            System.out.print("Enter Amount to Transfer: ");
+            System.out.println("Enter Amount to Transfer: ");
             int tamount = sc.nextInt();
-            System.out.println("Transfer Successful!"+tamount+ "Sent to "+ racn);
+            System.out.println("Transfer Successful! "+tamount+ "Sent to "+ racn);
             regCustomer.setTransferInfo(tamount,racn);
             regCustomer.setTotalamount(tamount);
 
-            System.out.print("New Balance: "+regCustomer.getBalance());
+            System.out.println("New Balance: "+ regCustomer.getBalance());
             System.out.println("Press Enter to continue..."); 
             sc.nextLine();
             System.out.println("-------------------------------------------");
@@ -292,7 +292,10 @@ class Boi implements Welcome_Bank{
             System.out.println("Deposited "+ regCustomer.getWithDrawAmount().get(i));
         }
         //Transfered
-        System.out.println(regCustomer.getTransferinfo());
+        Object[] transferInfo = regCustomer.getTransferinfo();
+        System.out.println(transferInfo[0] + " " + transferInfo[1] + " to Account AC" + transferInfo[2]);
+
+        System.out.println();
 
         System.out.println("Press Enter to continue..."); 
         sc.nextLine();
@@ -306,9 +309,9 @@ class Boi implements Welcome_Bank{
         // =========================================== 
         // Thank you for using XYZ Bank!
         System.out.println("=========================================== ");
-        System.out.println("निकास का द्वार (Exit)");
+        System.out.println("(Exit)");
         System.out.println("=========================================== ");
-        System.out.println("बैंक ऑफ इंडिया का उपयोग करने के लिए धन्यवाद || (Thank you for using Bank Of India !)");
+        System.out.println("(Thank you for using Bank Of India !)");
     }
 }
 class Bob implements Welcome_Bank{
