@@ -72,4 +72,5 @@ Each class implements `Welcome_Bank` and represents a different bank with simila
 ## License
 This project is open-source and free to use under the **MIT License**.
 ### Representation Diagram
-
+<img src="diagram-export-2-24-2025-12_58_59-PM.png" width="1000" height="400"/>
+  
