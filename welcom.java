@@ -1,3 +1,4 @@
+// import javafx.util.Pair;
 import java.util.Scanner;
 
 
@@ -19,6 +20,8 @@ class Customer{
     private String accType;
     private int accountnum;
     private int totalamount;
+    private int tamount;
+    private int racn;
     Customer(){
         this.accountnum = 0;
         this.email = null;
@@ -26,6 +29,7 @@ class Customer{
         this.name = null;
         this.totalamount = 0;
         this.accType = null;
+        
     }
     public void deposit(int amount){
         if (amount > 0) {
@@ -35,7 +39,11 @@ class Customer{
         }
         
     }
-    //setters-------------made by one and only bade bhaiya\
+    //setters-------------made by one and only bade bhaiya
+    public void setTransferInfo(int tamount,int racn){
+        this.tamount = tamount;
+        this.racn = racn;
+    }
     public void setAccountNum(int accountnum) {
         this.accountnum = accountnum;
     }
@@ -55,6 +63,10 @@ class Customer{
         this.totalamount -= credited;
     }
     //getters-------------made by one and only bade bhaiya
+    public Object[] getTransferinfo(){
+        String tra = "Transferred";
+        return new Object[]{tra,this.tamount,this.racn};
+    }
     public int getBalance(){
         return totalamount;
     }
@@ -192,16 +204,30 @@ class Boi implements Welcome_Bank{
         this.TransferMoney();
     }
     public void TransferMoney() {
-            // =========================================== 
-            // TRANSFER MONEY 
-            // =========================================== 
-            // Enter Your Account Number: ACC1001 
-            // Enter Receiver's Account Number: ACC2002 
-            // Enter Amount to Transfer: 100 
-            // Transfer Successful! $100 Sent to ACC2002 
-            // New Balance: $500 
-            // Press Enter to continue... -------------------------------------------
-            
+            System.out.println("=========================================== ");
+            System.out.println("Transfer Money ");
+            System.out.println("=========================================== ");
+            System.out.print("Enter Account Number: "+"AC");
+            Scanner sc = new Scanner(System.in);
+            int acn = sc.nextInt();
+            if(acn != regCustomer.getAccountNum()){
+                System.out.println("Mismatched");
+                System.out.print("Enter Account Number: "+"AC");
+                acn = sc.nextInt();
+            }
+            System.out.print("Enter Reciever Account Number: "+"AC");
+            int racn = sc.nextInt();
+            System.out.print("Enter Amount to Transfer: ");
+            int tamount = sc.nextInt();
+            System.out.println("Transfer Successful!"+tamount+ "Sent to "+ racn);
+            regCustomer.setTransferInfo(tamount,racn);
+            regCustomer.setTotalamount(tamount);
+
+            System.out.print("New Balance: "+regCustomer.getBalance());
+            System.out.println("Press Enter to continue..."); 
+            sc.nextLine();
+            System.out.println("-------------------------------------------");
+            this.ViewAccountDetails();
         }
     public void ViewAccountDetails() {
         System.out.println("Viewing account details...");
