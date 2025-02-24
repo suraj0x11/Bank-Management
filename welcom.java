@@ -262,6 +262,8 @@ class Boi implements Welcome_Bank{
             acn = sc.nextInt();
         }
         //details
+        System.out.println("Account holder name :"+regCustomer.getName());
+        System.out.println("Email ID :"+ regCustomer.getEmail());
         System.out.println("Account Number "+regCustomer.getAccountNum());
         System.out.println("Customer Id :"+ regCustomer.getId());
         System.out.println("Account Type "+ regCustomer.getAccType());
