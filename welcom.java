@@ -1,4 +1,5 @@
 // import javafx.util.Pair;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -22,6 +23,8 @@ class Customer{
     private int totalamount;
     private int tamount;
     private int racn;
+    private ArrayList<Integer> depoamount;
+    private ArrayList<Integer> WithDrwawamount;
     Customer(){
         this.accountnum = 0;
         this.email = null;
@@ -33,6 +36,7 @@ class Customer{
     }
     public void deposit(int amount){
         if (amount > 0) {
+            depoamount.add(amount);
             this.totalamount += amount;
         } else {
             System.out.println("Invalid deposit amount");
@@ -60,14 +64,11 @@ class Customer{
         this.accType = accType;
     }
     public void setTotalamount(int credited){
+        WithDrwawamount.add(credited);
         this.totalamount -= credited;
     }
     
     //getters-------------made by one and only bade bhaiya
-    public Object[] getTransferinfo(){
-        String tra = "Transferred";
-        return new Object[]{tra,this.tamount,this.racn};
-    }
     public int getBalance(){
         return totalamount;
     }
@@ -89,6 +90,17 @@ class Customer{
     public String getAccType(){
         return accType;
     }
+    public Object[] getTransferinfo(){
+        String tra = "Transferred";
+        return new Object[]{tra,this.tamount,this.racn};
+    }
+    public ArrayList<Integer> getDepoAmount(){
+        return this.depoamount;
+    }
+    public ArrayList<Integer> getWithDrawAmount(){
+        return this.WithDrwawamount;
+    }
+    
 }
 class Boi implements Welcome_Bank{
 
@@ -254,11 +266,43 @@ class Boi implements Welcome_Bank{
         System.out.println("-------------------------------------------");
         this.ViewTransactionHistory();
     }
+    // Transactions
     public void ViewTransactionHistory() {
-        
+        System.out.println("=========================================== ");
+        System.out.println("VIEW TRANSACTION HISTORY ");
+        System.out.println("=========================================== ");
+        System.out.println("Enter Account Number: "+"AC");
+        Scanner sc = new Scanner(System.in);
+        int acn = sc.nextInt();
+        if(acn != regCustomer.getAccountNum()){
+            acn = sc.nextInt();
+        }
+        //deposited Amount
+        for (int i = 0; i < regCustomer.getDepoAmount().size(); i++) {
+            System.out.println("Deposited "+ regCustomer.getDepoAmount().get(i));
+        }
+        //withDraw
+        for (int i = 0; i < regCustomer.getWithDrawAmount().size(); i++) {
+            System.out.println("Deposited "+ regCustomer.getWithDrawAmount().get(i));
+        }
+        //Transfered
+        System.out.println(regCustomer.getTransferinfo());
+
+        System.out.println("Press Enter to continue..."); 
+        sc.nextLine();
+        System.out.println("-------------------------------------------");
+        this.Exit();
     }
+    //Hogaya Pura Kaam
     public void Exit() {
-        System.out.println("Exiting...");
+        // =========================================== 
+        // EXIT 
+        // =========================================== 
+        // Thank you for using XYZ Bank!
+        System.out.println("=========================================== ");
+        System.out.println("निकास का द्वार (Exit)");
+        System.out.println("=========================================== ");
+        System.out.println("बैंक ऑफ इंडिया का उपयोग करने के लिए धन्यवाद || (Thank you for using Bank Of India !)");
     }
 }
 class Bob implements Welcome_Bank{
