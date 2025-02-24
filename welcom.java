@@ -252,7 +252,7 @@ class Boi implements Welcome_Bank{
         System.out.println("Press Enter to continue..."); 
         sc.nextLine();
         System.out.println("-------------------------------------------");
-        this.ViewTransactionHistory();();
+        this.ViewTransactionHistory();
     }
     public void ViewTransactionHistory() {
         
