@@ -242,7 +242,13 @@ class Boi implements Welcome_Bank{
             System.out.println("Enter Reciever Account Number: "+"AC");
             int racn = sc.nextInt();
             System.out.println("Enter Amount to Transfer: ");
+
             int tamount = sc.nextInt();
+            while(tamount > regCustomer.getBalance()){
+                System.out.println("Insufficient Balance");
+                System.out.println("Enter Amount to Transfer");
+                tamount = sc.nextInt();
+            }
             System.out.println("Transfer Successful! "+tamount+ "Sent to "+ racn);
             regCustomer.setTransferInfo(tamount,racn);
             regCustomer.setTotalamount(tamount);
