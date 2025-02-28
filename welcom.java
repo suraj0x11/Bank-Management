@@ -213,9 +213,12 @@ class Boi implements Welcome_Bank{
         System.out.println("Account number is Correct");
         System.out.println("Enter Amount to Withdraw");
         int credit = sc.nextInt();
-        if(credit < regCustomer.getBalance()){
-            regCustomer.setTotalamount(credit);
+        while(credit > regCustomer.getBalance()){
+            System.out.println("Insufficient Balance");
+            System.out.println("Enter Amount to Withdraw");
+            credit = sc.nextInt();
         }
+        regCustomer.setTotalamount(credit);
         System.out.println("Withdrawn"+credit+"Successfully!");
         System.out.println("New Balance "+regCustomer.getBalance());
         System.out.println("Press Enter to continue..."); 
